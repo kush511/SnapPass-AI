@@ -4,12 +4,12 @@
  * GET  /api/print/presets        — List supported size presets
  */
 
-const express = require("express");
-const router = express.Router();
+import express from "express";
+import { generateSheet, getSizePresets } from "../controllers/print.controller.js";
 
-const { generateSheet, getSizePresets } = require("../controllers/print.controller");
+const router = express.Router();
 
 router.post("/generate-sheet", generateSheet);
 router.get("/presets", getSizePresets);
 
-module.exports = router;
+export default router;

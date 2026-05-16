@@ -4,15 +4,15 @@
  * Validates file, saves to disk, and forwards to AI service for initial processing.
  */
 
-const path = require("path");
-const { v4: uuidv4 } = require("uuid");
-const config = require("../config/app.config");
+import path from "path";
+import { v4 as uuidv4 } from "uuid";
+import config from "../config/app.config.js";
 
 /**
  * POST /api/upload
  * Accepts a multipart image upload and responds with the stored file path.
  */
-const uploadPhoto = async (req, res, next) => {
+export const uploadPhoto = async (req, res, next) => {
   try {
     // multer middleware has already saved the file at this point
     if (!req.file) {
@@ -46,7 +46,7 @@ const uploadPhoto = async (req, res, next) => {
  * GET /api/upload/:fileId
  * Returns metadata for a previously uploaded file.
  */
-const getUploadedPhoto = async (req, res, next) => {
+export const getUploadedPhoto = async (req, res, next) => {
   try {
     const { fileId } = req.params;
     // TODO: Fetch from database
@@ -62,5 +62,3 @@ const getUploadedPhoto = async (req, res, next) => {
     next(error);
   }
 };
-
-module.exports = { uploadPhoto, getUploadedPhoto };

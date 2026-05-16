@@ -4,12 +4,12 @@
  * GET  /api/process/preview/:filename — Get preview of processed image
  */
 
-const express = require("express");
-const router = express.Router();
+import express from "express";
+import { processImage, getPreview } from "../controllers/image.controller.js";
 
-const { processImage, getPreview } = require("../controllers/image.controller");
+const router = express.Router();
 
 router.post("/", processImage);
 router.get("/preview/:filename", getPreview);
 
-module.exports = router;
+export default router;

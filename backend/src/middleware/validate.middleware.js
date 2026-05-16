@@ -6,7 +6,7 @@
 /**
  * Validates that a photo file was attached to the upload request.
  */
-const validateUpload = (req, res, next) => {
+export const validateUpload = (req, res, next) => {
   if (!req.file) {
     return res.status(400).json({
       success: false,
@@ -15,5 +15,3 @@ const validateUpload = (req, res, next) => {
   }
   next();
 };
-
-module.exports = { validateUpload };

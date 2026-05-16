@@ -4,14 +4,14 @@
  * GET  /api/upload/:fileId — Get upload metadata
  */
 
-const express = require("express");
-const router = express.Router();
+import express from "express";
+import { uploadPhoto, getUploadedPhoto } from "../controllers/upload.controller.js";
+import { uploadMiddleware } from "../middleware/upload.middleware.js";
+import { validateUpload } from "../middleware/validate.middleware.js";
 
-const { uploadPhoto, getUploadedPhoto } = require("../controllers/upload.controller");
-const { uploadMiddleware } = require("../middlewares/upload.middleware");
-const { validateUpload } = require("../middlewares/validate.middleware");
+const router = express.Router();
 
 router.post("/", uploadMiddleware.single("photo"), validateUpload, uploadPhoto);
 router.get("/:fileId", getUploadedPhoto);
 
-module.exports = router;
+export default router;

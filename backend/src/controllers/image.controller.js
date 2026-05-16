@@ -6,18 +6,22 @@
  *  - DPI optimisation & resizing
  */
 
-const axios = require("axios");
-const FormData = require("form-data");
-const fs = require("fs");
-const path = require("path");
-const config = require("../config/app.config");
+import axios from "axios";
+import FormData from "form-data";
+import fs from "fs";
+import path from "path";
+import { fileURLToPath } from 'url';
+import config from "../config/app.config.js";
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
 /**
  * POST /api/process
  * Body: { filename, backgroundColour, photoSizePreset }
  * Calls the AI service /process endpoint and returns processed image URL.
  */
-const processImage = async (req, res, next) => {
+export const processImage = async (req, res, next) => {
   try {
     const { filename, backgroundColour = "white", photoSizePreset = "35x45" } = req.body;
 
@@ -62,7 +66,7 @@ const processImage = async (req, res, next) => {
  * GET /api/process/preview/:filename
  * Returns a lightweight preview of the processed image.
  */
-const getPreview = async (req, res, next) => {
+export const getPreview = async (req, res, next) => {
   try {
     const { filename } = req.params;
     // TODO: Implement preview retrieval from processed images directory
@@ -74,5 +78,3 @@ const getPreview = async (req, res, next) => {
     next(error);
   }
 };
-
-module.exports = { processImage, getPreview };

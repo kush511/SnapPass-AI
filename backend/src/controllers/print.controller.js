@@ -4,15 +4,15 @@
  * Coordinates with the AI service's sheet generation endpoint.
  */
 
-const axios = require("axios");
-const config = require("../config/app.config");
+import axios from "axios";
+import config from "../config/app.config.js";
 
 /**
  * POST /api/print/generate-sheet
  * Body: { filename, quantity, photoSizePreset }
  * Requests the AI service to arrange passport photos on an A4 sheet.
  */
-const generateSheet = async (req, res, next) => {
+export const generateSheet = async (req, res, next) => {
   try {
     const { filename, quantity = 6, photoSizePreset = "35x45" } = req.body;
 
@@ -44,7 +44,7 @@ const generateSheet = async (req, res, next) => {
  * GET /api/print/presets
  * Returns the list of supported passport photo size presets.
  */
-const getSizePresets = async (_req, res) => {
+export const getSizePresets = async (_req, res) => {
   const presets = [
     { id: "35x45", label: "35×45 mm (India / UK)", widthMm: 35, heightMm: 45 },
     { id: "51x51", label: "51×51 mm (USA Visa)", widthMm: 51, heightMm: 51 },
@@ -55,5 +55,3 @@ const getSizePresets = async (_req, res) => {
 
   res.json({ success: true, data: presets });
 };
-
-module.exports = { generateSheet, getSizePresets };

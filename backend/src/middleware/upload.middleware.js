@@ -3,10 +3,14 @@
  * Configures multer for disk storage with file type & size validation.
  */
 
-const multer = require("multer");
-const path = require("path");
-const fs = require("fs");
-const config = require("../config/app.config");
+import multer from "multer";
+import path from "path";
+import fs from "fs";
+import { fileURLToPath } from 'url';
+import config from "../config/app.config.js";
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
 // Ensure uploads directory exists
 const uploadDir = path.join(__dirname, "..", "..", config.upload.dir);
@@ -30,10 +34,8 @@ const fileFilter = (_req, file, cb) => {
   }
 };
 
-const uploadMiddleware = multer({
+export const uploadMiddleware = multer({
   storage,
   fileFilter,
   limits: { fileSize: config.upload.maxFileSize },
 });
-
-module.exports = { uploadMiddleware };

@@ -2,9 +2,10 @@
  * App configuration loaded from environment variables.
  * Centralised so controllers and services import from one place.
  */
-
-module.exports = {
-  port: parseInt(process.env.PORT, 10) || 5000,
+import dotenv from 'dotenv';
+dotenv.config();
+export default {
+  port: parseInt(process.env.PORT, 10) || 3000,
   nodeEnv: process.env.NODE_ENV || "development",
 
   aiServiceUrl: process.env.AI_SERVICE_URL || "http://localhost:8000",
@@ -15,7 +16,7 @@ module.exports = {
     allowedMimeTypes: ["image/jpeg", "image/png", "image/webp"],
   },
 
-  corsOrigin: process.env.CORS_ORIGIN || "http://localhost:3000",
+  corsOrigin: process.env.CORS_ORIGIN || "http://localhost:5173",
 
   // Database config — ready for MongoDB integration
   // db: {

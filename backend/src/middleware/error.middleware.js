@@ -6,7 +6,7 @@
 /**
  * 404 — Route not found handler
  */
-const notFound = (req, res, next) => {
+export const notFound = (req, res, next) => {
   const error = new Error(`Not Found — ${req.originalUrl}`);
   error.status = 404;
   next(error);
@@ -16,7 +16,7 @@ const notFound = (req, res, next) => {
  * Global error handler
  * Formats all errors into a consistent JSON response.
  */
-const errorHandler = (err, _req, res, _next) => {
+export const errorHandler = (err, _req, res, _next) => {
   const statusCode = err.status || err.statusCode || 500;
 
   // Multer-specific error messages
@@ -33,5 +33,3 @@ const errorHandler = (err, _req, res, _next) => {
     ...(process.env.NODE_ENV === "development" && { stack: err.stack }),
   });
 };
-
-module.exports = { notFound, errorHandler };
