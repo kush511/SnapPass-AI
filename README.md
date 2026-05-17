@@ -234,6 +234,7 @@ AI_SERVICE_URL=http://localhost:8000
 UPLOAD_DIR=uploads
 MAX_FILE_SIZE=10485760
 CORS_ORIGIN=http://localhost:3000
+MONGO_URI=mongodb://localhost:27017/snappass
 ```
 
 ---
