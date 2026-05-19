@@ -1,8 +1,9 @@
 import { Router } from "express";
-import { loginValidation, registerValidation } from "../validation/auth.validation.js";
+import { loginValidation, registerValidation, passwordResetRequestValidation, verifyPasswordResetOtpValidation, passwordResetValidation } from "../validation/auth.validation.js";
 import validate from "../middleware/validate.middleware.js";
 import * as authController from "../controllers/auth.controller.js";
 import authMiddleware from "../middleware/auth.middleware.js";
+import { otpActionLimiter } from "../middleware/rateLimit.middleware.js";
 
 const router = Router();
 
@@ -33,5 +34,26 @@ router.post("/logout", authMiddleware, authController.logout);
  * @access Private
  */
 router.get("/me", authMiddleware, authController.getMe);
+
+/**
+ * @route POST /api/auth/password-reset-request
+ * @description Request an OTP for password reset
+ * @access Public
+ */
+router.post("/password-reset-request", otpActionLimiter, passwordResetRequestValidation, validate, authController.requestPasswordReset);
+
+/**
+ * @route POST /api/auth/verify-otp
+ * @description Verify the OTP before resetting the password
+ * @access Public
+ */
+router.post("/verify-otp", otpActionLimiter, verifyPasswordResetOtpValidation, validate, authController.verifyPasswordResetOtp);
+
+/**
+ * @route POST /api/auth/password-reset
+ * @description Reset password using OTP
+ * @access Public
+ */
+router.post("/password-reset", otpActionLimiter, passwordResetValidation, validate, authController.resetPassword);
 
 export default router;
