@@ -487,7 +487,7 @@ Looking for something specific to do? These are the most impactful areas where w
 | Error Toast | `src/components/` | Create a global, reusable toast notification component for errors |
 | Admin Stats UI | `src/pages/AdminDashboard.jsx` | Build the UI to connect statistics to the real API once the backend is ready |
 | Sidebar Navigation | `src/components/layout/Sidebar.jsx` | Build a clean, collapsible sidebar for the main editor view |
-| Dark Mode Toggle | `src/index.css` & `Navbar.jsx` | Add `prefers-color-scheme: dark` styles and a manual toggle switch |
+| Dark Mode Toggle | `src/index.css` & `src/components/layout/Navbar.jsx` | Add `prefers-color-scheme: dark` styles and a manual toggle switch |
 
 ---
 
