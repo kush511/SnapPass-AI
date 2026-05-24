@@ -23,6 +23,7 @@ function Navbar({darkMode, toggleTheme}) {
 
   const navLinks = [
     { path: '/', label: 'Home' },
+    { path: '/studio', label: 'Studio' },
     { path: '/upload', label: 'Upload' },
     { path: '/editor', label: 'Editor' },
     { path: '/print-preview', label: 'Print' },
