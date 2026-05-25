@@ -1,4 +1,4 @@
-# 🚀 SnapPass AI — Backend
+#  SnapPass AI — Backend
 
 The Express.js REST API for SnapPass AI. Handles photo uploads, connects to the Python AI service for processing, and manages user authentication.
 
@@ -6,7 +6,7 @@ Runs on **`http://localhost:5000`**
 
 ---
 
-## 📋 Prerequisites
+##  Prerequisites
 
 - [Node.js](https://nodejs.org/) v18 or higher
 - [MongoDB](https://www.mongodb.com/) (local or Atlas)
@@ -14,7 +14,7 @@ Runs on **`http://localhost:5000`**
 
 ---
 
-## 🚀 Local Setup
+##  Local Setup
 
 ### 1. Navigate to the backend folder
 
@@ -58,7 +58,7 @@ Backend will be running at `http://localhost:5000`
 
 ---
 
-## ⚙️ Environment Variables
+##  Environment Variables
 
 Create a `.env` file in the `backend/` folder:
 
@@ -100,7 +100,7 @@ CLOUDINARY_API_SECRET=
 
 ---
 
-## 📁 Folder Structure
+##  Folder Structure
 
 ```
 backend/
@@ -165,7 +165,7 @@ backend/
 
 ---
 
-## 🗄️ Database Connection
+##  Database Connection
 
 `db.js` handles the MongoDB connection using Mongoose.
 
@@ -176,7 +176,7 @@ It is called once when the server starts in `server.js`:
 
 ---
 
-## 📡 API Endpoints
+##  API Endpoints
 
 ### Health Check
 
@@ -261,7 +261,7 @@ It is called once when the server starts in `server.js`:
 
 ---
 
-## 🔌 How Backend Connects to Python AI Service
+##  How Backend Connects to Python AI Service
 
 ```
 React Frontend
@@ -303,7 +303,7 @@ res.send(Buffer.from(aiResponse.data));
 
 ---
 
-## 🗄️ MongoDB Setup
+##  MongoDB Setup
 
 ### Option 1 — Local MongoDB
 
@@ -333,7 +333,7 @@ MONGO_URI=mongodb+srv://username:password@cluster.mongodb.net/snappass
 
 ---
 
-## ⚠️ Common Errors & Fixes
+##  Common Errors & Fixes
 
 **`MONGO_URI is not defined`**
 Add `MONGO_URI` to your `.env` file and make sure MongoDB is running.
@@ -368,7 +368,7 @@ Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser
 
 ---
 
-## 📦 Dependencies
+##  Dependencies
 
 | Package | Purpose |
 |---------|---------|
